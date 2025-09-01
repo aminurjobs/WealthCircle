@@ -1,0 +1,2003 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>
+   WealthCircle | Invest Smarter Together
+  </title>
+  <meta content="Join our investment club to learn, collaborate, and grow your wealth with like-minded individuals." name="description">
+  <link href="css/all.min.css" rel="stylesheet">
+  <link href="css/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <script src="js/aos.js">
+  </script>
+  <style>
+   .hero-gradient {
+      background: linear-gradient(135deg, rgba(20, 33, 61, 0.9) 0%, rgba(47, 82, 51, 0.9) 100%);
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .nav-link::after {
+        content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #fca311;
+      transition: width 0.3s;
+    }
+    /* Typing animation */
+    .typing-dots {
+      display: flex;
+      align-items: center;
+      height: 17px;
+    }
+    .typing-dots span {
+      width: 7px;
+      height: 7px;
+      margin: 0 2px;
+      background-color: #6b7280;
+      border-radius: 50%;
+      display: inline-block;
+      animation: typing 1.4s infinite ease-in-out;
+    }
+    .typing-dots span:nth-child(1) {
+      animation-delay: 0s;
+    }
+    .typing-dots span:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .typing-dots span:nth-child(3) {
+      animation-delay: 0.4s;
+    }
+    @keyframes typing {
+      0%,
+      60%,
+      100% {
+        transform: translateY(0);
+      }
+      30% {
+        transform: translateY(-5px);
+      }
+    }
+    /* Custom scrollbar for chat */
+    #chatbot-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+    #chatbot-messages::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    #chatbot-messages::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 3px;
+    }
+    #chatbot-messages::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+    }
+    /* Blob animation keyframes */
+    @keyframes blob {
+      0%,
+      100% {
+        transform: translate(0px, 0px) scale(1);
+      }
+      33% {
+        transform: translate(30px, -50px) scale(1.1);
+      }
+      66% {
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+    }
+    .animate-blob {
+      animation: blob 7s infinite;
+    }
+    .animation-delay-2000 {
+      animation-delay: 2s;
+    }
+
+
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+        .hoveff {
+      text-decoration: none;
+      transition: 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      background: #eb232a;
+      color: white;
+      border: none;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+
+    .hoveff:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+       .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+     html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+      }
+
+      .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.95rem;
+      }
+     
+    }
+    
+    /* Payment Form Styles */
+    .payment-option-btn {
+      border: 2px solid #e5e7eb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .payment-option-btn:hover {
+      border-color: #FCA311;
+      color: #14213D;
+    }
+    .payment-option-btn.active {
+      border-color: #FCA311;
+      background-color: #fffbeb; 
+      color: #14213D;
+      box-shadow: 0 0 0 2px #FCA311;
+    }
+.nameDiv {
+    margin-left: -16px;
+}
+::placeholder {
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+
+   .card-logo {
+     width: 48px;
+     height: 30px;
+     background: white;
+     padding: 2px;
+     border-radius: 4px;
+     object-fit: contain;
+   }
+   /* Remove label styling, hide labels */
+   #selectedPaymentMethod label {
+     display: block;
+     margin-bottom: 0.75rem;
+   }
+   #selectedPaymentMethod label > span {
+     
+
+
+    .card-logo {
+      height: 24px;
+      width: auto;
+      object-fit: contain;
+    }
+h4#orderSummary {
+    font-size: 16px;
+}
+
+input#orderAmount {
+    font-size: 16px;
+}
+
+
+
+   
+  </style>
+<script>
+   tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#14213D',
+            secondary: '#2F5233',
+            accent: '#FCA311',
+            light: '#DFF6F0',
+            dark: '#333333',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+ <!--<script>
+    // Disable right-click
+    document.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
+    }, false);
+
+    // Disable keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+      // Ctrl+S
+      if (e.ctrlKey && e.key.toLowerCase() === 's') {
+        e.preventDefault();
+        alert('Save is disabled on this page.');
+      }
+      // Ctrl+U
+      if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+        e.preventDefault();
+        alert('View source is disabled on this page.');
+      }
+      // F12 (Dev Tools)
+      if (e.keyCode === 123) {
+        e.preventDefault();
+        alert('Developer tools are disabled.');
+      }
+    });
+  </script>-->
+ </head>
+ <body class="font-sans text-dark bg-gray-50 overflow-x-hidden">
+  <!-- Navigation -->
+<header class="fixed top-0 w-full bg-white shadow-sm z-50" id="home">
+   <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+     <!-- Logo -->
+     <div class="flex items-center space-x-4">
+      <a class="text-2xl font-bold text-primary" href="#">
+       <span class="text-accent">
+        Wealth
+       </span>
+       Circle
+      </a>
+     </div>
+     <!-- Desktop Navigation -->
+     <nav class="hidden md:flex space-x-8 items-center">
+      <a class="nav-link text-primary font-medium" href="#home">
+       Home
+      </a>
+      <a class="nav-link text-primary font-medium" href="#about">
+       About
+      </a>
+      <a class="nav-link text-primary font-medium" href="#benefits">
+       Benefits
+      </a>
+      <a class="nav-link text-primary font-medium" href="#insights">
+       Insights
+      </a>
+      <a class="hidden nav-link text-primary font-medium" href="#join">
+       Join
+      </a>
+      <a class="nav-link text-primary font-medium" href="#contact">
+       Contact
+      </a>
+     </nav>
+     <!-- Right side buttons -->
+     <div class="hidden md:flex items-center space-x-4">
+      <a href="payment.html" class="btn bg-accent hover:bg-opacity-90 text-white font-medium px-6 py-2 rounded-md transition duration-300 font-bold">
+        Easy Pay
+      </a>
+       <button aria-label="hidden Open login form" id="open-login-btn" class="hidden text-primary hover:text-accent focus:outline-none">
+         <i class="fas fa-sign-in-alt text-2xl"></i>
+       </button>
+     </div>
+     <!-- Mobile Menu Button -->
+     <div class="md:hidden flex items-center space-x-4">
+       <button aria-label="Toggle menu" class="text-primary focus:outline-none" id="menu-toggle">
+         <i class="fas fa-bars text-2xl"></i>
+       </button>
+     </div>
+   </div>
+   <!-- Mobile Menu -->
+   <nav class="hidden md:hidden bg-white shadow-lg border-t border-gray-200" id="mobile-menu">
+     <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+       <a class="text-primary font-medium text-lg" href="#home">
+         Home
+       </a>
+       <a class="text-primary font-medium text-lg" href="#about">
+         About
+       </a>
+       <a class="text-primary font-medium text-lg" href="#benefits">
+         Benefits
+       </a>
+       <a class="text-primary font-medium text-lg" href="#insights">
+         Insights
+       </a>
+       <a class="hidden text-primary font-medium text-lg" href="#join">
+         Join
+       </a>
+       <a class="text-primary font-medium text-lg" href="#contact">
+         Contact
+       </a>
+      <a href="payment.html" class="btn bg-accent hover:bg-opacity-90 text-white font-medium px-6 py-2 rounded-md transition duration-300 font-bold">
+        Easy Pay
+      </a>
+     </div>
+   </nav>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white pt-32 pb-6 md:pb-20 md:pt-40 md:pb-28">
+   <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center">
+     <div class="md:w-1/2 mb-6  md:mb-0 data-aos=" fade-right"="">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 font-serif">
+       Invest Smarter.
+       <span class="text-accent">
+        Together.
+       </span>
+      </h1>
+    
+      <p class="text-sm md:text-2xl text-gray-200 mb-8">
+     Outperforming traditional benchmarks and maintaining the highest standards of integrity with confidentiality.
+      </p>
+
+
+       <div class="mb-8"> <span class="text-2xl md:text-3xl text-gray-200 mb-8  font-bold font-serif">
+Join the club</span><span class="text-2xl md:text-3xl text-gray-200 mb-8  font-bold font-serif ">>></span>
+      </div>
+       
+      <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+       <a class="bg-accent btn rounded-md" href="#join">
+        Request Invitation
+       </a>
+       <a class="bg-white btn text-dark rounded-md" href="#benefits">
+        Experience the Journey
+       </a>
+      </div>
+     </div>
+     <div class="md:w-1/2 overflow-hidden" data-aos="fade-left">
+      <img alt="Investment club members discussing around a table in a modern office with laptops and charts" class="rounded-lg  w-full h-auto " height="400" src="images/header-image.jpeg" width="600">
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Stats Section -->
+  <section class="py-16 bg-white">
+   <div class="container mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+     <div class="p-6" data-aos="fade-up" data-aos-delay="200">
+       
+      <div class="text-4xl font-bold text-primary mb-2">
+       
+       <span class="counter" data-target="200">
+        0
+       </span>
+       +
+      </div>
+      <div class="text-gray-600">
+      NYSE Years Operating
+      </div>
+     </div>
+
+      
+     <div class="p-6" data-aos="fade-up" data-aos-delay="100">
+      <div class="text-4xl font-bold text-primary mb-2">
+       <span class="counter" data-target="10">
+        0
+       </span>
+       +
+      </div>
+      <div class="text-gray-600">
+       NYSE Longest Annual Bull Run
+      </div>
+     </div>
+
+     <div class="p-6" data-aos="fade-up" data-aos-delay="300">
+      <div class="text-4xl font-bold text-primary mb-2">
+       <span class="counter" data-target="10">
+        0
+       </span>
+       %
+      </div>
+      <div class="text-gray-600">
+       NYSE Avg. Annual Return
+      </div>
+     </div>
+     <div class="p-6" data-aos="fade-up" data-aos-delay="400">
+      <div class="text-4xl font-bold text-primary mb-2">
+       <span class="counter" data-target="3">
+        0
+       </span>
+      
+      </div>
+      <div class="text-gray-600">
+      NYSE Major Indexes
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- About Section -->
+  <section class="py-10 md:py-20 bg-gray-50" id="about">
+   <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row items-center">
+     <div class="md:w-1/2 mb-12 md:mb-0 overflow-hidden" data-aos="fade-right">
+      <img alt="Investment club members collaborating in a bright office space with charts and laptops" class="hoveff rounded-lg h-auto md:max-w-[600px]" height="400" src="images/about.jpeg" width="600">
+     </div>
+<div class="md:w-1/2 md:pl-12 aos-init aos-animate" data-aos="fade-left">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6 font-serif">
+       About
+       <span class="text-accent">
+        WealthCircle
+       </span>
+      </h2>
+      <h3 class="text-xl font-bold text-accent mb-2">       Who We Are      </h3>
+  <p class="text-lg text-gray-700 mb-6">Join a select circle of investors and entrepreneurs who share a commitment to excellence and confidentiality. 
+    We are a private, invitation-only investment club focused on generating sustainable returns through strategic participation in the stock market.      </p>
+  
+      <h3 class="text-xl font-bold text-accent mb-2">       Our Approach      </h3>
+  <p class="text-lg text-gray-700 mb-6">  We believe the path to success is  through patience, precision, and perspective. Guided by a network of experienced investors who value discretion,
+    insight, and discipline, we identify  opportunities that align with a shared vision.
+      </p>
+
+
+
+      <h3 class="text-xl font-bold text-accent mb-2">       Our Vision      </h3>
+  <p class="text-lg text-gray-700 mb-6"> Prosperity is more than numbers, it’s the legacy you create. Together, we redefine what it means to continuously improve and enhance strategies that deliver exceptional outcomes. 
+    We aim to exceed expectations by pooling knowledge, sharing resources, and utilizing time-tested principles. </p>
+
+      <h3 class="text-xl font-bold text-accent mb-2">       Our Mission    </h3>
+  <p class="text-lg text-gray-700 mb-6"> We are not just building positions, we are building longevity. Our mission is to ensure the prosperity created today, opens the door to longer term growth for the future.</p>
+
+
+
+
+
+
+  
+      <a class="inline-flex items-center font-bold text-accent text-xl hover:text-primary transition duration-300" href="#">
+    Strong Growth & Smart Decisions
+       <i class="fas fa-arrow-right ml-2">
+       </i>
+      </a>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Benefits Section -->
+  <section class="py-10 md:py-20 bg-white" id="benefits">
+   <div class="container mx-auto px-6">
+    <div class="text-center mb-16" data-aos="fade-up">
+     <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4 font-serif">
+      Beyond 
+      <span class="text-accent">
+       Returns
+      </span>
+     </h2>
+     <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+    Combining exclusivity, legacy, and innovation in the modern era>>
+     </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <div class="bg-gray-50 p-8 rounded-lg transition duration-300 card-hover" data-aos="fade-up" data-aos-delay="100">
+      <div class="text-accent text-4xl mb-6">
+       <i class="fas fa-graduation-cap">
+       </i>
+      </div>
+      <h3 class="text-xl font-bold text-primary mb-4">
+       Educational Resources
+
+      </h3>
+      <p class="text-gray-700">
+       Build your investing knowledge with interactive learning.
+      </p>
+     </div>
+     <div class="bg-gray-50 p-8 rounded-lg transition duration-300 card-hover" data-aos="fade-up" data-aos-delay="200">
+      <div class="text-accent text-4xl mb-6">
+       <i class="fas fa-chart-line">
+       </i>
+      </div>
+      <h3 class="text-xl font-bold text-primary mb-4">
+       Market Research
+      </h3>
+      <p class="text-gray-700">
+       Get access to outlook on investment opportunities.
+      </p>
+     </div>
+     <div class="bg-gray-50 p-8 rounded-lg transition duration-300 card-hover" data-aos="fade-up" data-aos-delay="300">
+      <div class="text-accent text-4xl mb-6">
+       <i class="fas fa-users">
+       </i>
+      </div>
+      <h3 class="text-xl font-bold text-primary mb-4">
+       Future-Focused
+      </h3>
+      <p class="text-gray-700">
+       Shaping foundations for generational impact.
+
+      </p>
+     </div>
+     <div class="bg-gray-50 p-8 rounded-lg transition duration-300 card-hover" data-aos="fade-up" data-aos-delay="100">
+      <div class="text-accent text-4xl mb-6">
+       <i class="fas fa-hand-holding-usd">
+       </i>
+      </div>
+      <h3 class="text-xl font-bold text-primary mb-4">
+       Real-World Experience
+      </h3>
+      <p class="text-gray-700">
+       Gain practical investing experience.
+      </p>
+     </div>
+     <div class="bg-gray-50 p-8 rounded-lg transition duration-300 card-hover" data-aos="fade-up" data-aos-delay="200">
+      <div class="text-accent text-4xl mb-6">
+       <i class="fas fa-shield-alt">
+       </i>
+      </div>
+      <h3 class="text-xl font-bold text-primary mb-4">
+       Accountability
+      </h3>
+      <p class="text-gray-700">
+       Stay on track with peak performance and forward-thinking.
+      </p>
+     </div>
+     <div class="bg-gray-50 p-8 rounded-lg transition duration-300 card-hover" data-aos="fade-up" data-aos-delay="300">
+      <div class="text-accent text-4xl mb-6">
+       <i class="fas fa-network-wired">
+       </i>
+      </div>
+      <h3 class="text-xl font-bold text-primary mb-4">
+       Valuable Connections
+      </h3>
+      <p class="text-gray-700">
+       Where insights meet opportunity.
+      </p>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Testimonials Section -->
+  <section class="py-10 md:py-20 bg-primary text-white">
+   <div class="container mx-auto px-6">
+    <div class="text-center mb-16" data-aos="fade-up">
+     <h2 class="text-3xl md:text-4xl font-bold mb-4 font-serif">
+      What 
+      <span class="text-accent">
+       Participants  Say
+      </span>
+     </h2>
+     <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+      Testing the Temperature>>
+     </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+     <div class="bg-white bg-opacity-10 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="100">
+      <div class="flex items-center mb-6">
+       <div class="flex-shrink-0 mr-4">
+        <img alt="Portrait photo of Sarah Johnson, a smiling woman with dark hair" class="hidden w-12 h-12 rounded-full" height="48" src="images/edec56ab-fd2a-476c-fe42-131671ea2fea.jpg" width="48">
+       </div>
+       <div class="nameDiv">
+        <h4 class="font-bold">
+         Sarah J.
+        </h4>
+        <p class="text-gray-300 hidden text-sm">
+         Member since 2018
+        </p>
+       </div>
+      </div>
+      <p class="text-gray-200 mb-4 -mt-4">
+       "This transformed my approach to investing. The collective knowledge and support helped me grow my portfolio by 35% in my first year."
+      </p>
+      <div class="text-accent">
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+      </div>
+     </div>
+     <div class="bg-white bg-opacity-10 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+      <div class="flex items-center mb-6">
+       <div class="flex-shrink-0 mr-4">
+        <img alt="Portrait photo of Michael Chen, a man with short black hair" class="hidden w-12 h-12 rounded-full" height="48" src="images/8c233a23-a67d-4936-497f-9ed50c2586cd.jpg" width="48">
+       </div>
+       <div class="nameDiv">
+        <h4 class="font-bold">
+         Michael C.
+        </h4>
+        <p class="text-gray-300 hidden text-sm">
+         Member since 2015
+        </p>
+       </div>
+      </div>
+      <p class="text-gray-200 mb-4 -mt-4">
+       "The educational resources alone are worth the price. I went from knowing nothing about investing to confidently investing."
+      </p>
+      <div class="text-accent">
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+      </div>
+     </div>
+     <div class="bg-white bg-opacity-10 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="300">
+      <div class="flex items-center mb-6">
+       <div class="flex-shrink-0 mr-4">
+        <img alt="Portrait photo of Priya Patel, a woman with long black hair" class="hidden w-12 h-12 rounded-full" height="48" src="images/cfbf62ea-3247-4d4f-dedc-19c0fec40f54.jpg" width="48">
+       </div>
+       <div class="nameDiv">
+        <h4 class="font-bold">
+         Priya P.
+        </h4>
+        <p class="text-gray-300 hidden text-sm">
+         Member since 2020
+        </p>
+       </div>
+      </div>
+      <p class="text-gray-200 mb-4 -mt-4">
+       "The collaborative investment process has helped me see opportunities I would have missed on my own. My returns have consistently beaten the market."
+      </p>
+      <div class="text-accent">
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+       <i class="fas fa-star">
+       </i>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Insights Section -->
+  <section class="pt-20 pb-10 bg-gray-50" id="insights">
+   <div class="container mx-auto px-6">
+    <div class="text-center mb-16" data-aos="fade-up">
+     <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4 font-serif">
+      Extremely 
+      <span class="text-accent">
+       Thorough
+      </span>
+     </h2>
+     <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+      Well-positioned from rigorous research to sophisticated market narratives>>
+     </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+     <article class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 card-hover" data-aos="fade-up" data-aos-delay="100">
+      <img alt="Market trends graph with upward arrows and charts" class="hoveff w-full h-48  object-fit" height="192" src="images/blog-image-01.jpeg" width="600">
+      <div class="p-6">
+       <div class="flex items-center mb-3">
+        <span class="bg-light text-secondary text-xs font-medium px-3 py-1 rounded-full">
+         Market Trends
+        </span>
+        <span class="text-gray-500 text-sm ml-auto">
+         <i class="far hidden fa-clock mr-1">
+         </i>
+         Collaborative Growth
+        </span>
+       </div>
+       <h3 class="text-xl font-bold text-primary mb-3">
+        Playing The Long Game
+       </h3>
+       <p class="text-gray-700 mb-4">
+       Analyzing volatility, opportunities, and risks in developing economies as global conditions shift.
+       </p>
+       <a class="text-accent font-medium hover:text-primary transition duration-300" href="#">
+        Progressive Vision
+        <i class="fas fa-arrow-right ml-1">
+        </i>
+       </a>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 card-hover" data-aos="fade-up" data-aos-delay="200">
+      <img alt="Tech stocks displayed on a digital screen with charts" class=" hoveff w-full h-48  object-fit" height="192" src="images/blog-image-02.jpeg" width="600">
+      <div class="p-6">
+       <div class="flex items-center mb-3">
+        <span class="bg-light text-secondary text-xs font-medium px-3 py-1 rounded-full">
+         Sector Sentiment
+        </span>
+        <span class="text-gray-500 text-sm ml-auto">
+         <i class="far hidden fa-clock mr-1">
+         </i>
+        Legacy-Focused
+        </span>
+       </div>
+       <h3 class="text-xl font-bold text-primary mb-3">
+        Higher Rate Environment
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Evaluating which technology companies are best positioned to weather economic headwinds.
+       </p>
+       <a class="text-accent font-medium hover:text-primary transition duration-300" href="#">
+        Tactical Approach
+        <i class="fas fa-arrow-right ml-1">
+        </i>
+       </a>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 card-hover" data-aos="fade-up" data-aos-delay="300">
+      <img alt="Investment strategy planning with charts and notes on a desk" class="hoveff w-full h-48 object-fit" height="192" src="images/blog-image-03.jpeg" width="600">
+      <div class="p-6">
+       <div class="flex items-center mb-3">
+        <span class="bg-light text-secondary text-xs font-medium px-3 py-1 rounded-full">
+         Strategy
+        </span>
+        <span class="text-gray-500 text-sm ml-auto">
+         <i class="far hidden fa-clock mr-1">
+         </i>
+         Fundamental & Technical Analysis
+        </span>
+       </div>
+       <h3 class="text-xl font-bold text-primary mb-3">
+        Data-Driven Decisions
+       </h3>
+       <p class="text-gray-700 mb-4">
+        Transforming market turbulence into opportunities for long-term success.
+       </p>
+       <a class="text-accent font-medium hover:text-primary transition duration-300" href="#">
+        Navigating Changing Markets
+        <i class="fas fa-arrow-right ml-1">
+        </i>
+       </a>
+      </div>
+     </article>
+    </div>
+    <div class="text-center mt-12" data-aos="fade-up">
+     <a class=" btn inline-block bg-accent hover:bg-opacity-90 text-white font-bold px-8 py-3 rounded-md transition duration-300" href="#">
+      Seasonality, Global Economics, Geopolitics, & Monetary Policy
+     </a>
+    </div>
+   </div>
+  </section>
+  
+  <!-- Join Section -->
+  <section class="md:pt-20 bg-white" id="join">
+   <div class="container mx-auto px-6">
+    <div class="flex flex-col lg:flex-row">
+     <div class="w-full mb-12 lg:mb-0 lg:pr-12 flex flex-col justify-center" data-aos="fade-right">
+      <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6 font-serif">
+       Invite
+       <span class="text-accent">
+        or
+       </span>
+       Referral Only
+      </h2>
+      <p class="text-sm text-gray-700 mb-8">
+       Participation is by invitation or referral only and is not available to the general public.
+      </p>
+      
+      
+     <div class="w-full bg-gray-50 p-6 rounded-lg md:h-[90%]">
+       <h3 class="text-xl font-bold text-primary mb-4">
+        How It Works>>
+       </h3>
+       <div class="space-y-4">
+        <div class="flex items-start">
+         <div class="flex-shrink-0 bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 font-semibold">
+          1
+         </div>
+         <div>
+          <h4 class="font-bold text-primary">
+          Waiting List
+          </h4>
+          <p class="text-gray-700">
+           Access begins by invitation or referral.
+          </p>
+         </div>
+        </div>
+        <div class="flex items-start">
+         <div class="flex-shrink-0 bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 font-semibold">
+          2
+         </div>
+         <div>
+          <h4 class="font-bold text-primary">
+         Qualify
+          </h4>
+          <p class="text-gray-700">
+         Interview for participation.
+          </p>
+         </div>
+        </div>
+        <div class="flex items-start">
+         <div class="flex-shrink-0 bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 font-semibold">
+          3
+         </div>
+         <div>
+          <h4 class="font-bold text-primary">
+           Join the Club
+          </h4>
+          <p class="text-gray-700">
+          Once handpicked, gain exclusive access.
+          </p>
+         </div>
+        </div>
+        <div class=" hidden flex items-start">
+         <div class="flex-shrink-0 bg-accent text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 mt-1 font-semibold">
+          4
+         </div>
+         <div>
+          <h4 class="font-bold text-primary">
+           Start Participating
+          </h4>
+          <p class="text-gray-700">
+           Access all member benefits and join discussions
+          </p>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="relative bg-gray-50 p-6 rounded-3xl max-w-3xl w-full sm:p-8 sm:max-w-4xl">
+    <div class="flex items-center  mb-2">
+      <i class="hidden fas fa-lock text-accent text-2xl drop-shadow-sm"></i>
+      <h1 class="font-extrabold text-accent text-lg md:text-2xl tracking-tight">
+Request to join the waiting list>>
+      </h1>
+    </div>
+    <p class="text-gray-700 mb-8 text-sm tracking-wide">
+    If you are interested in participation, please fill out this form to be added to the waiting list. When an opening becomes available, you will be notified.
+    </p>
+
+    <form id="paymentForm" class="space-y-6" novalidate="">
+      <!-- Personal Info -->
+      <div class="flex flex-col md:flex-row gap-x-6 mb-2">
+        <div class="flex-1 flex flex-col mt-4 md:mt-0">
+          <input autocomplete="family-name" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="fullName" type="text" name="fullName" required="" aria-required="true" placeholder="Name">
+        </div>
+      </div>
+
+      <div class="mb-2">
+        <label class="sr-only" for="email">Email Address</label>
+        <input autocomplete="email" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="email" type="email" name="email" required="" aria-required="true" placeholder="Email">
+      </div>
+
+      <div class="mb-2">
+        <label class="sr-only" for="phone">Phone Number</label>
+        <input autocomplete="tel" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="phone" type="tel" name="phone" required="" aria-required="true" placeholder="Phone Number">
+      </div>
+
+      <div class="mb-2">
+        <label class="sr-only" for="investExperience">Investment Experience</label>
+        <textarea class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="investExperience" name="investExperience" required="" rows="2" aria-required="true" placeholder="Investment Experience"></textarea>
+      </div>
+
+      <div class="mb-2">
+        <label class="sr-only" for="investGoal">Primary Investment Goal</label>
+        <textarea class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="investGoal" name="investGoal" required="" rows="2" aria-required="true" placeholder="Investment Goal"></textarea>
+      </div>
+
+      <button id="nextBtn" type="button" class="w-full btn bg-accent  text-white font-bold px-8 py-3 rounded-md transition duration-300">
+        Next
+      </button>
+    </form>
+  </div>
+
+  <!-- Payment Popup Modal -->
+  <div id="paymentPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center z-50 py-8 px-4 overflow-auto hidden " role="dialog" aria-modal="true" aria-labelledby="paymentPopupTitle">
+    <div class="bg-white rounded-3xl p-6 max-w-3xl w-full shadow-2xl relative sm:p-8">
+      <button id="closePaymentPopup" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-3xl font-bold focus:outline-none sm:top-6 sm:right-6" aria-label="Close payment popup">
+        �
+      </button>
+
+      <h1 id="paymentPopupTitle" class="text-gray-900 text-2xl mb-1 font-extrabold sm:text-3xl">
+        Choose Payment Method
+      </h1>
+      <p class="text-gray-600 text-base mb-6 sm:text-lg">
+        All transactions are secure and encrypted.
+      </p>
+
+      <form id="paymentDetailsForm" class="space-y-6" novalidate="">
+        <fieldset class="border border-gray-300 rounded-md divide-y divide-gray-300 mb-6" id="paymentMethodsPopup">
+          <label class="flex items-center justify-between p-4 cursor-pointer sm:p-6" for="creditCardPopup">
+            <div class="flex items-center gap-4">
+              <input class="w-5 h-5 text-accent bg-gray-50 border-gray-300" name="paymentPopup" type="radio" value="Credit card" id="creditCardPopup" aria-required="false">
+              <span class="text-gray-900 text-base sm:text-lg">Debit/Credit Card</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img alt="Visa credit card logo, blue and gold Visa text on white background" class="card-logo" src="images/1200px-Visa_2021.svg.png">
+              <img alt="Mastercard credit card logo, two overlapping red and yellow circles with Mastercard text on white background" class="card-logo" src="images/1200px-Mastercard_2019_logo.svg.png">
+              <img alt="American Express credit card logo, blue rectangle with white American Express text" class="card-logo" src="images/American-Express-Color.png">
+            </div>
+          </label>
+          <label class="flex items-center justify-between p-4 cursor-pointer sm:p-6" for="applePayPopup">
+            <div class="flex items-center gap-4">
+              <input class="w-5 h-5 text-accent bg-gray-50 border-gray-300" name="paymentPopup" type="radio" value="Apple Pay" id="applePayPopup" aria-required="false">
+              <span class="text-gray-900 text-base sm:text-lg">Apple Pay</span>
+            </div>
+            <img alt="Apple Pay logo black text on white background" class="card-logo" src="images/2560px-Apple_Pay_logo.svg.png">
+          </label>
+        </fieldset>
+
+        <div id="cardFields" class="space-y-4 hidden">
+          <div class="mb-2">
+            <label class="sr-only" for="cardNumberPopup">Credit Card Number</label>
+            <input autocomplete="cc-number" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="cardNumberPopup" inputmode="numeric" type="text" name="cardNumberPopup" placeholder="Debit or Credit Card Number">
+          </div>
+
+          <div class="flex flex-col md:flex-row gap-6 mb-2">
+            <div class="flex-1">
+              <label class="sr-only" for="expiryPopup">Expiration Date</label>
+              <input autocomplete="cc-exp" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="expiryPopup" inputmode="numeric" type="text" name="expiryPopup" placeholder="Expiration Date">
+            </div>
+            <div class="flex-1">
+              <label class="sr-only" for="cvcPopup">Security Code</label>
+              <input autocomplete="cc-csc" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="cvcPopup" inputmode="numeric" type="text" name="cvcPopup" placeholder="Security Code">
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <label class="sr-only" for="cardNamePopup">Name On Card</label>
+            <input autocomplete="cc-name" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="cardNamePopup" type="text" name="cardNamePopup" placeholder="Name On Card">
+          </div>
+        </div>
+
+        <div id="applePayFields" class="hidden space-y-4">
+          <div class="mb-2">
+            <label class="sr-only" for="applePayName">Name on Apple Pay Account</label>
+            <input autocomplete="name" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="applePayName" type="text" name="applePayName" placeholder="Name on Apple Pay Account">
+          </div>
+          <div class="mb-2">
+            <label class="sr-only" for="applePayEmail">Apple Pay Email</label>
+            <input autocomplete="email" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="applePayEmail" type="email" name="applePayEmail" placeholder="Apple Pay Email">
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-6 mb-2">
+          <div class="flex-1">
+            <label class="sr-only" for="countryPopup">Country</label>
+            <select id="countryPopup" name="countryPopup" required="" aria-required="true" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm bg-white sm:text-lg">
+              <option value="" disabled="" selected="">Country</option>
+              <option value="United States">United States</option>
+              <option value="Canada">Canada</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Australia">Australia</option>
+              <option value="Germany">Germany</option>
+              <option value="France">France</option>
+              <option value="India">India</option>
+              <option value="Japan">Japan</option>
+              <option value="China">China</option>
+              <option value="Brazil">Brazil</option>
+              <option value="Mexico">Mexico</option>
+              <option value="South Africa">South Africa</option>
+              <option value="New Zealand">New Zealand</option>
+              <option value="Netherlands">Netherlands</option>
+              <option value="Sweden">Sweden</option>
+            </select>
+          </div>
+          <div class="flex-1">
+            <label class="sr-only" for="zipPopup">Zip Code</label>
+            <input autocomplete="postal-code" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="zipPopup" type="text" name="zipPopup" required="" aria-required="true" placeholder="Billing ZIP Code">
+          </div>
+        </div>
+
+        <h4 id="orderSummary" class="text-accent text-xl mb-2 flex justify-between items-center font-extrabold sm:text-2xl" aria-label="Payment required">
+          <span>Payment required</span>
+          <input type="text" id="orderAmount" value="$300.00" readonly="" class="bg-gray-50 rounded-md py-1 px-3 text-accent max-w-[150px] text-right cursor-not-allowed font-extrabold sm:text-xl" aria-readonly="true">
+        </h4>
+
+        <div class="flex items-start mb-4 space-x-3">
+          <input class="mt-1 w-5 h-5 border border-gray-400 rounded-lg focus:ring-2 focus:ring-accent transition-shadow shadow-sm" id="agreePopup" type="checkbox" name="agreePopup" required="" aria-required="true">
+          <label for="agreePopup" class="text-gray-700 text-base select-none sm:text-lg">
+            By submitting this form, I agree to the terms and conditions and provide my electronic consent.
+          </label>
+        </div>
+
+        <button class="w-full bg-accent hover:bg-opacity-90 text-white font-bold py-3 px-4 rounded-md transition duration-300 flex items-center justify-center gap-3 sm:text-xl" type="submit" aria-label="Submit Application">
+          
+          <span class="tracking-wide text-sm md:text-xl" id="submitButtonText">
+          Pay Now
+          </span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Confirmation Popup Modal -->
+  <div id="confirmationPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 p-4" role="dialog" aria-modal="true" aria-labelledby="confirmationTitle" aria-describedby="confirmationDesc">
+    <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl text-center relative sm:p-10">
+      <button id="closeConfirmationPopup" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl font-bold focus:outline-none sm:top-6 sm:right-6" aria-label="Close payment confirmation popup">
+        �
+      </button>
+      <i class="fas fa-check-circle text-accent text-6xl mb-6 sm:text-7xl"></i>
+      <h2 id="confirmationTitle" class="text-gray-900 font-extrabold text-xl mb-4 sm:text-2xl">
+        Success!
+      </h2>
+      <p id="confirmationDesc" class="text-gray-700 text-lg sm:text-xl">
+        You should receive a confirmation email shortly.
+      </p>
+    </div>
+  </div>
+
+ <script>
+  const nextBtn = document.getElementById("nextBtn");
+  const paymentPopup = document.getElementById("paymentPopup");
+  const closePaymentPopup = document.getElementById("closePaymentPopup");
+  const paymentDetailsForm = document.getElementById("paymentDetailsForm");
+  const confirmationPopup = document.getElementById("confirmationPopup");
+  const closeConfirmationPopup = document.getElementById("closeConfirmationPopup");
+  const mainForm = document.getElementById("paymentForm");
+
+  const creditCardRadio = document.getElementById("creditCardPopup");
+  const applePayRadio = document.getElementById("applePayPopup");
+  const cardFields = document.getElementById("cardFields");
+  const applePayFields = document.getElementById("applePayFields");
+  const submitButtonText = document.getElementById("submitButtonText");
+  const orderAmountInput = document.getElementById("orderAmount");
+
+  // Track whether popup was opened via nextBtn or easyPay button
+  let isEasyPay = false;
+
+  // Show payment popup on Next button click after validating personal info
+  nextBtn.addEventListener("click", () => {
+    isEasyPay = false;
+    
+    // Validate personal info fields before showing popup
+    const fullName = mainForm.querySelector("#fullName");
+    const email = mainForm.querySelector("#email");
+    const phone = mainForm.querySelector("#phone");
+    const investExperience = mainForm.querySelector("#investExperience");
+    const investGoal = mainForm.querySelector("#investGoal");
+
+    if (
+      !fullName.checkValidity() ||
+      !email.checkValidity() ||
+      !phone.checkValidity() ||
+      !investExperience.checkValidity() ||
+      !investGoal.checkValidity()
+    ) {
+      mainForm.reportValidity();
+      return;
+    }
+
+    showPaymentPopup();
+  });
+
+  // Easy Pay Button
+  document.addEventListener('DOMContentLoaded', function() {
+    const easyPayBtns = document.querySelectorAll('.open-payment-popup-btn');
+    
+    if (easyPayBtns.length > 0) {
+      easyPayBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          isEasyPay = true;
+          showPaymentPopup();
+        });
+      });
+    }
+  });
+
+  function showPaymentPopup() {
+    paymentPopup.classList.remove("hidden");
+    // Focus first input in popup
+    paymentDetailsForm.querySelector("input, textarea, select").focus();
+
+    // Default to no payment method selected and hide all payment fields
+    creditCardRadio.checked = false;
+    applePayRadio.checked = false;
+    cardFields.classList.add("hidden");
+    applePayFields.classList.add("hidden");
+    setRequired(cardFields, false);
+    setRequired(applePayFields, false);
+    updateSubmitText();
+  }
+    
+  // Close payment popup
+  closePaymentPopup.addEventListener("click", () => {
+    paymentPopup.classList.add("hidden");
+  });
+
+  paymentPopup.addEventListener("click", (e) => {
+    if (e.target === paymentPopup) {
+      paymentPopup.classList.add("hidden");
+    }
+  });
+
+  // Toggle fields based on payment method selection
+  function togglePaymentFields() {
+    if (creditCardRadio.checked) {
+      cardFields.classList.remove("hidden");
+      applePayFields.classList.add("hidden");
+      setRequired(cardFields, true);
+      setRequired(applePayFields, false);
+    } else if (applePayRadio.checked) {
+      cardFields.classList.add("hidden");
+      applePayFields.classList.remove("hidden");
+      setRequired(cardFields, false);
+      setRequired(applePayFields, true);
+    } else {
+      cardFields.classList.add("hidden");
+      applePayFields.classList.add("hidden");
+      setRequired(cardFields, false);
+      setRequired(applePayFields, false);
+    }
+    updateSubmitText();
+  }
+
+  function setRequired(container, required) {
+    const inputs = container.querySelectorAll("input");
+    inputs.forEach((input) => {
+      if (required) {
+        input.setAttribute("required", "true");
+        input.setAttribute("aria-required", "true");
+      } else {
+        input.removeAttribute("required");
+        input.removeAttribute("aria-required");
+      }
+    });
+  }
+
+  creditCardRadio.addEventListener("change", togglePaymentFields);
+  applePayRadio.addEventListener("change", togglePaymentFields);
+
+  // Update submit button text based on payment method and order amount
+  //function updateSubmitText() {
+   // const amount = orderAmountInput.value || "$300.00";
+   // submitButtonText.textContent = `Pay Now - ${amount}`;
+  //}
+
+  // Sync order amount input and submit button text
+  orderAmountInput.addEventListener("input", () => {
+    // Ensure value starts with $ and is valid format
+    let val = orderAmountInput.value.trim();
+    if (!val.startsWith("$")) {
+      val = "$" + val.replace(/[^0-9.]/g, "");
+    }
+    orderAmountInput.value = val;
+    updateSubmitText();
+  });
+
+  // Submit payment details form inside popup
+  paymentDetailsForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    // Validate personal info form only if not easyPay
+    if (!isEasyPay && !mainForm.checkValidity()) {
+      mainForm.reportValidity();
+      paymentPopup.classList.add("hidden");
+      return;
+    }
+
+    // Validate payment details form fields only if payment method selected
+    if (creditCardRadio.checked) {
+      if (
+        !paymentDetailsForm.querySelector("#cardNumberPopup").value.trim() ||
+        !paymentDetailsForm.querySelector("#expiryPopup").value.trim() ||
+        !paymentDetailsForm.querySelector("#cvcPopup").value.trim() ||
+        !paymentDetailsForm.querySelector("#cardNamePopup").value.trim()
+      ) {
+        paymentDetailsForm.reportValidity();
+        return;
+      }
+    } else if (applePayRadio.checked) {
+      if (
+        !paymentDetailsForm.querySelector("#applePayName").value.trim() ||
+        !paymentDetailsForm.querySelector("#applePayEmail").value.trim()
+      ) {
+        paymentDetailsForm.reportValidity();
+        return;
+      }
+    }
+
+    // Validate country and zip always
+    if (
+      !paymentDetailsForm.querySelector("#countryPopup").value ||
+      !paymentDetailsForm.querySelector("#zipPopup").value.trim()
+    ) {
+      paymentDetailsForm.reportValidity();
+      return;
+    }
+
+    // Validate agree checkbox
+    if (!paymentDetailsForm.querySelector("#agreePopup").checked) {
+      paymentDetailsForm.reportValidity();
+      return;
+    }
+
+    // Close payment popup
+    paymentPopup.classList.add("hidden");
+
+    // Show confirmation popup
+    confirmationPopup.classList.remove("hidden");
+
+    // Reset forms based on how popup was opened
+    if (!isEasyPay) {
+      mainForm.reset();
+    }
+    paymentDetailsForm.reset();
+
+    // Reset order amount to default
+    orderAmountInput.value = "$300.00";
+    updateSubmitText();
+  });
+
+  // Close confirmation popup
+  closeConfirmationPopup.addEventListener("click", () => {
+    confirmationPopup.classList.add("hidden");
+  });
+
+  confirmationPopup.addEventListener("click", (e) => {
+    if (e.target === confirmationPopup) {
+      confirmationPopup.classList.add("hidden");
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+     </div>
+    
+   
+  </section>
+
+  <!-- Security Section -->
+  <section class=" p-10 md:py-20 bg-white">
+   <div class="container mx-auto px-6">
+    <div class="flex flex-col lg:flex-row items-center">
+     <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12 justify-items-center" data-aos="fade-right">
+      <img alt="Security concept with lock and digital shield icons on a blue background" class="max-h-96 hoveff rounded-lg shadow-xl w-96" height="400" src="images/security-trust.jpeg" width="600">
+     </div>
+     <div class="lg:w-1/2" data-aos="fade-left">
+      <h2 class="text-3xl md:text-4xl font-bold text-primary mb-6 font-serif">
+       Security &
+       <span class="text-accent">
+        Trust
+       </span>
+      </h2>
+      <p class="text-lg text-gray-700 mb-8">
+      Protecting privacy with a commitment to confidentiality.
+      </p>
+      <div class="space-y-6">
+       <div class="flex">
+        <div class="flex-shrink-0 text-accent text-xl mt-1 mr-4">
+         <i class="fas fa-lock">
+         </i>
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-primary mb-2">
+Encryption
+         </h3>
+         <p class="text-gray-700">
+All data is encrypted in transit.
+         </p>
+        </div>
+       </div>
+       <div class="flex">
+        <div class="flex-shrink-0 text-accent text-xl mt-1 mr-4">
+         <i class="fas fa-user-shield">
+         </i>
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-primary mb-2 ml-[-4px]">
+Evaluation
+         </h3>
+         <p class="text-gray-700 ml-[-4px]">
+Eligibility is based on vision, alignment of values, and standards of excellence.
+         </p>
+        </div>
+       </div>
+       <div class="flex">
+        <div class="flex-shrink-0 text-accent text-xl mt-1 mr-4">
+         <i class="fas fa-shield-alt">
+         </i>
+        </div>
+        <div>
+         <h3 class="text-xl font-bold text-primary mb-2">
+Transparency
+         </h3>
+         <p class="text-gray-700">
+Prioritizing trade-offs and playing defense when volatility starts to creep higher.
+         </p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- CTA Section -->
+  <section class="py-10 md:py-20 bg-accent text-white">
+   <div class="container mx-auto px-6 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 font-serif" data-aos="fade-up">
+   Preserving Growth for Decades to Come
+    </h2>
+    <p class="text-xl mb-8 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+     Connecting the dots early and balancing innovation>>
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4" data-aos="fade-up" data-aos-delay="200">
+     <a class="btn bg-white hover:bg-gray-100 text-primary font-bold px-8 py-3 rounded-md transition duration-300" href="#join">
+      Keeping Up The Momentum
+     </a>
+     <a class="btn bg-transparent hover:bg-white hover:bg-opacity-10 border-2 border-white font-bold px-8 py-3 rounded-md transition duration-300" href="#contact">
+     Deep Market Understanding
+     </a>
+    </div>
+   </div>
+  </section>
+ <!-- Contact Section -->
+  <section class="py-10 md:py-20 bg-gray-50" id="contact">
+   <div class="container mx-auto px-6">
+    <div class="text-center mb-16" data-aos="fade-up">
+     <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4 font-serif">
+      Investing Made
+      <span class="text-accent">
+       Simple>>
+      </span>
+     </h2>
+     <p class="text-sm text-gray-600 max-w-3xl mx-auto">
+      Leveling The Playing Field In Evolving Markets
+     </p>
+    </div>
+    <div class="flex flex-col lg:flex-row">
+     <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12" data-aos="fade-right">
+      <div class="bg-white p-8 rounded-lg shadow-md">
+       <h3 class="text-xl font-bold text-primary mb-6">
+        Contact
+       </h3>
+       <div class="space-y-6">
+        <div class="flex items-start">
+         <div class="flex-shrink-0 text-accent text-xl mt-1 mr-4">
+          <i class="fas fa-map-marker-alt">
+          </i>
+         </div>
+         <div>
+          <h4 class="font-bold text-primary mb-1">
+           Address
+          </h4>
+          <p class="text-gray-700">
+           123 Investment Street, Financial District, NY 10005
+          </p>
+         </div>
+        </div>
+        <div class="flex items-start">
+         <div class="flex-shrink-0 text-accent text-xl mt-1 mr-4">
+          <i class="fas fa-phone-alt">
+          </i>
+         </div>
+         <div>
+          <h4 class="font-bold text-primary mb-1">
+           Phone
+          </h4>
+          <p class="text-gray-700">
+           (212) 555-1234
+          </p>
+         </div>
+        </div>
+        <div class="flex items-start">
+         <div class="flex-shrink-0 text-accent text-xl mt-1 mr-4">
+          <i class="fas fa-envelope">
+          </i>
+         </div>
+         <div>
+          <h4 class="font-bold text-primary mb-1">
+           Email
+          </h4>
+          <p class="text-gray-700">
+           info@wealthcircle.com
+          </p>
+         </div>
+        </div>
+        <div class="flex items-start">
+         <div class="flex-shrink-0 text-accent text-xl mt-1 mr-4">
+          <i class="fas fa-clock">
+          </i>
+         </div>
+         <div>
+          <h4 class="font-bold text-primary mb-1">
+           Hours
+          </h4>
+          <p class="text-gray-700">
+           Monday - Friday: 9am - 5pm EST
+          </p>
+         </div>
+        </div>
+       </div>
+       <div class="hidden mt-8">
+        <h4 class="font-bold text-primary mb-4">
+         Follow Us
+        </h4>
+        <div class="flex space-x-4">
+         <a aria-label="LinkedIn" class="text-primary hover:text-accent text-2xl transition duration-300" href="#">
+          <i class="fab fa-linkedin">
+          </i>
+         </a>
+         <a aria-label="Twitter" class="text-primary hover:text-accent text-2xl transition duration-300" href="#">
+          <i class="fab fa-twitter">
+          </i>
+         </a>
+         <a aria-label="Facebook" class="text-primary hover:text-accent text-2xl transition duration-300" href="#">
+          <i class="fab fa-facebook">
+          </i>
+         </a>
+         <a aria-label="Instagram" class="text-primary hover:text-accent text-2xl transition duration-300" href="#">
+          <i class="fab fa-instagram">
+          </i>
+         </a>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="lg:w-1/2" data-aos="fade-left">
+      <div class="bg-white p-8 rounded-lg shadow-md">
+       <h3 class="text-xl font-bold text-primary mb-6">
+        Send Us a Message
+       </h3>
+       <form class="space-y-6" novalidate="">
+        <div>
+         <p class="block text-gray-700  mb-2" for="contact-name">
+          Name
+         </p>
+         <input class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" id="contact-name" required="" type="text">
+        </div>
+        <div>
+         <p class="block text-gray-700  mb-2" for="contact-email">
+          Email
+         </p>
+         <input class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" id="contact-email" required="" type="email">
+        </div>
+        <div class="hidden">
+         <p class="block text-gray-700  mb-2" for="contact-subject">
+          Subject
+         </p>
+         <select class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" id="contact-subject">
+          <option value="">
+           Select a subject
+          </option>
+          <option value="membership">
+           Membership Inquiry
+          </option>
+          <option value="partnership">
+           Partnership Opportunity
+          </option>
+          <option value="press">
+           Press Inquiry
+          </option>
+          <option value="other">
+           Other
+          </option>
+         </select>
+        </div>
+        <div>
+         <p class="block text-gray-700 mb-2" for="contact-message">
+          Message
+         </p>
+         <textarea class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" id="contact-message" required="" rows="5"></textarea>
+        </div>
+        <div>
+         <button class="btn w-full bg-accent hover:bg-opacity-90 text-white font-bold py-3 px-4 rounded-md transition duration-300" type="submit">
+         Submit
+         </button>
+        </div>
+       </form>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section>
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-12">
+   <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between">
+     <div class="mb-8 md:mb-0">
+      <a class="text-2xl font-bold text-white" href="#">
+       <span class="text-accent">
+        Wealth
+       </span>
+       Circle
+      </a>
+      <p class="mt-4 text-gray-300 max-w-xs">
+       We do the heavy lifting. It only gets better.
+      </p>
+     </div>
+     <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+      <div>
+       <h3 class="text-lg font-bold mb-4">
+        Navigation
+       </h3>
+       <ul class="space-y-2">
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#home">
+          Home
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#about">
+          About
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#benefits">
+          Benefits
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#insights">
+          Insights
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#join">
+          Join
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div>
+       <h3 class="text-lg font-bold mb-4">
+        Legal
+       </h3>
+       <ul class="space-y-2">
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#">
+          Terms of Service
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#">
+          Privacy Policy
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#">
+          Risk Disclosure
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#">
+          Compliance
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div>
+       <h3 class="text-lg font-bold mb-4">
+        Connect
+       </h3>
+       <ul class="space-y-2">
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#contact">
+          Contact Us
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#">
+          FAQ
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#">
+          Blog
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#">
+          Events
+         </a>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+    <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-center items-center">
+     <p class="text-gray-400 mb-4 md:mb-0">
+      © 2025 WealthCircle. All rights reserved.
+     </p>
+     <div class="hidden flex space-x-6">
+      <a aria-label="LinkedIn" class="text-gray-400 hover:text-accent transition duration-300" href="#">
+       <i class="fab fa-linkedin text-xl">
+       </i>
+      </a>
+      <a aria-label="Twitter" class="text-gray-400 hover:text-accent transition duration-300" href="#">
+       <i class="fab fa-twitter text-xl">
+       </i>
+      </a>
+      <a aria-label="Facebook" class="text-gray-400 hover:text-accent transition duration-300" href="#">
+       <i class="fab fa-facebook text-xl">
+       </i>
+      </a>
+      <a aria-label="Instagram" class="text-gray-400 hover:text-accent transition duration-300" href="#">
+       <i class="fab fa-instagram text-xl">
+       </i>
+      </a>
+     </div>
+    </div>
+   </div>
+  </footer>
+  
+  <!-- Back to Top Button -->
+  <button aria-label="Back to top" class="fixed bottom-8 right-4 bg-accent text-white w-12 h-12 rounded-full shadow-lg hidden items-center justify-center transition duration-300 hover:bg-opacity-90" id="back-to-top">
+   <i class="fas fa-arrow-up">
+   </i>
+  </button>
+    <script>
+   AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true,
+    offset: 100,
+});
+
+// Mobile Menu Toggle
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+
+menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
+
+// Back to Top Button
+const backToTopButton = document.getElementById('back-to-top');
+window.addEventListener('scroll', function () {
+    if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('hidden');
+        backToTopButton.classList.add('flex');
+    } else {
+        backToTopButton.classList.add('hidden');
+        backToTopButton.classList.remove('flex');
+    }
+});
+
+backToTopButton.addEventListener('click', function () {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    });
+});
+
+// Animated Stats Counter
+const counters = document.querySelectorAll('.counter');
+function animateCounters() {
+    counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        let count = 0;
+        const duration = 500; // Animation duration in ms
+        const increment = target / (duration / 10);
+
+        const updateCount = () => {
+            count += increment;
+            if (count < target) {
+                counter.innerText = Math.ceil(count);
+                setTimeout(updateCount, 10);
+            } else {
+                counter.innerText = target;
+            }
+        };
+        updateCount();
+    });
+}
+
+const statsSection = document.querySelector('.py-16.bg-white');
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                observer.unobserve(entry.target);
+            }
+        });
+    },
+    { threshold: 0.5 }
+);
+
+if (statsSection) {
+    observer.observe(statsSection);
+}
+
+// Smooth Scrolling for Anchor Links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 100,
+                behavior: 'smooth',
+            });
+
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+    });
+});
+
+// Wait for the DOM to be fully loaded before running interactive scripts
+document.addEventListener('DOMContentLoaded', function () {
+
+    // --- CHATBOT LOGIC ---
+    const toggleBtn = document.getElementById('chatbot-toggle');
+    const chatContainer = document.getElementById('chatbot-container'); // Added
+    const chatMessages = document.getElementById('chatbot-messages'); // Corrected
+    const chatInput = document.getElementById('chatbot-input'); // Added
+    const chatSend = document.getElementById('chatbot-send'); // Added
+    const minimizeBtn = document.getElementById('chatbot-minimize'); // Added
+    const closeBtn = document.getElementById('chatbot-close'); // Added
+    const typingIndicator = document.getElementById('typing-indicator');
+    const quickReplyBtns = document.querySelectorAll('.quick-reply-btn');
+    const notificationBadge = document.getElementById('notification-badge');
+
+    const knowledgeBase = {
+        join: {
+            question: 'How do I join the investment club?',
+            answer:
+                "Joining WealthCircle involves a simple 4-step process:<br><br>1. <strong>Submit an application</strong> through our website<br>2. <strong>Attend an orientation</strong> session (virtual or in-person)<br>3. <strong>Complete onboarding</strong> including our education modules<br>4. <strong>Make your initial investment</strong> (minimum $1,000)<br><br>Our average processing time is 3-5 business days. Would you like me to send you the application link?",
+            followUp: ['Send application link', 'What are the benefits?'],
+        },
+        'minimum investment': {
+            question: "What's the minimum investment?",
+            answer:
+                "WealthCircle has a <strong>minimum initial investment of $1,000</strong> with additional contributions of at least $100/month.<br><br>This structure ensures:<br>• Serious commitment from members<br>• Meaningful portfolio growth<br>• Access to premium investment opportunities<br><br>We offer flexible payment options including bank transfers and scheduled contributions.",
+            followUp: ['Payment options', 'Can I start with less?'],
+        },
+        'decision making': {
+            question: 'How are investment decisions made?',
+            answer:
+                "Our investment process combines <strong>collective intelligence</strong> with <strong>professional analysis</strong>:<br><br>1. <strong>Research Phase</strong>: Our analyst team identifies opportunities<br>2. <strong>Discussion</strong>: Members debate pros/cons in forums<br>3. <strong>Voting</strong>: All members vote on each decision<br>4. <strong>Execution</strong>: Trades are made by our licensed brokers<br><br>This democratic approach has achieved 14.2% average annual returns since 2015.",
+            followUp: ['See performance history', 'How often do we meet?'],
+        },
+        fees: {
+            question: 'What are the membership fees?',
+            answer:
+                "WealthCircle operates on a transparent fee structure:<br><br>• <strong>Annual Membership</strong>: $250 (covers operational costs)<br>• <strong>Management Fee</strong>: 1% of assets under management<br>• <strong>Performance Fee</strong>: 10% of profits above 8% annual return<br><br>All fees are clearly outlined in our membership agreement with no hidden charges.",
+            followUp: ['Fee examples', 'How do fees compare?'],
+        },
+        meetings: {
+            question: 'How often does the club meet?',
+            answer:
+                "Our meeting schedule is designed for maximum engagement:<br><br>• <strong>Monthly Webinar</strong>: First Tuesday of each month (7pm EST)<br>• <strong>Quarterly Deep Dives</strong>: 2-hour strategy sessions<br>• <strong>Annual Retreat</strong>: 3-day in-person event (optional)<br><br>All meetings are recorded for members who can't attend live.",
+            followUp: ['Next meeting topic', 'View calendar'],
+        },
+            meetings: {
+            question: 'Payment options',
+            answer:
+                "We have 4 payment option<br>1. Cridt Card. <br>2. Master Card. <br>3. Amirican Express Card. <br>4. Apple Pay",
+            followUp: ['Next meeting topic', 'View calendar'],
+        },
+    };
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+            chatContainer.classList.toggle('hidden');
+            notificationBadge.classList.add('hidden');
+            toggleBtn.classList.toggle('bg-accent');
+            toggleBtn.classList.toggle('bg-gray-500');
+        });
+    }
+
+    if (minimizeBtn) {
+        minimizeBtn.addEventListener('click', function () {
+            chatContainer.classList.add('hidden');
+            notificationBadge.classList.remove('hidden');
+            toggleBtn.classList.remove('bg-gray-500');
+            toggleBtn.classList.add('bg-accent');
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+            chatContainer.classList.add('hidden');
+            notificationBadge.classList.add('hidden');
+            toggleBtn.classList.remove('bg-gray-500');
+            toggleBtn.classList.add('bg-accent');
+        });
+    }
+
+    if (chatInput) {
+        chatInput.addEventListener('input', function () {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        });
+    }
+
+    function sendMessage() {
+        const message = chatInput.value.trim();
+        if (message) {
+            addMessage(message, 'user');
+            chatInput.value = '';
+            chatInput.style.height = 'auto';
+            typingIndicator.classList.remove('hidden');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            setTimeout(() => {
+                typingIndicator.classList.add('hidden');
+                const response = generateResponse(message);
+                addMessage(response.answer, 'bot', response.followUp);
+            }, 1500 + Math.random() * 2000);
+        }
+    }
+
+    function generateResponse(message) {
+        const lowerMessage = message.toLowerCase();
+        for (const [key, data] of Object.entries(knowledgeBase)) {
+            if (lowerMessage.includes(key)) {
+                return data;
+            }
+        }
+        const defaultResponses = [
+            {
+                answer:
+                    "I'm still learning about WealthCircle's offerings. Could you please rephrase your question or try one of these topics:<br><br>• Membership requirements<br>• Investment strategies<br>• Club performance<br>• Fee structure",
+                followUp: ['Membership requirements', 'Investment strategies', 'Club performance'],
+            },
+            {
+                answer:
+                    'For detailed questions about your specific situation, I recommend contacting our member support team at <strong>support@wealthcircle.com</strong> or calling <strong>(800) 555-9876</strong> during business hours.',
+                followUp: [],
+            },
+        ];
+        return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+    }
+
+    function addMessage(text, sender, followUp = []) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `mb-4 flex ${sender === 'user' ? 'justify-end' : ''}`;
+        if (sender === 'bot') {
+            messageDiv.innerHTML = `
+            <div class="w-10 h-10 rounded-full bg-gray-300 flex-shrink-0 flex items-center justify-center mr-3">
+              <img alt="WealthCircle AI Assistant" class="w-10 h-10 rounded-full" src="https://storage.googleapis.com/a1aa/image/cfbf62ea-3247-4d4f-dedc-19c0fec40f54.jpg">
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-sm max-w-[85%]">
+              <div class="text-sm whitespace-pre-line">${text}</div>
+              <p class="text-xs text-gray-500 mt-2">${formatTime()}</p>
+            </div>
+          `;
+        } else {
+            messageDiv.innerHTML = `
+            <div class="bg-primary text-white p-4 rounded-lg shadow-sm max-w-[85%]">
+              <div class="text-sm">${text}</div>
+              <p class="text-xs text-white text-opacity-70 mt-2">${formatTime()}</p>
+            </div>
+          `;
+        }
+        chatMessages.appendChild(messageDiv);
+        if (followUp.length > 0 && sender === 'bot') {
+            const followUpDiv = document.createElement('div');
+            followUpDiv.className = 'mb-6 pl-14';
+            followUpDiv.innerHTML = `
+            <p class="text-xs text-gray-500 mb-2">FOLLOW-UP QUESTIONS:</p>
+            <div class="flex flex-wrap gap-2">
+              ${followUp
+                    .map(
+                        (q) =>
+                            `<button class="quick-reply-btn bg-gray-100 hover:bg-gray-200 text-primary text-xs px-3 py-2 rounded-md transition">${q}</button>`
+                    )
+                    .join('')}
+            </div>
+          `;
+            chatMessages.appendChild(followUpDiv);
+            document.querySelectorAll('.quick-reply-btn').forEach((btn) => {
+                btn.addEventListener('click', function () {
+                    addMessage(this.textContent, 'user');
+                    setTimeout(() => {
+                        const response = generateResponse(this.textContent);
+                        addMessage(response.answer, 'bot', response.followUp);
+                    }, 1000);
+                });
+            });
+        }
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function formatTime() {
+        const now = new Date();
+        return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    if (chatSend) {
+        chatSend.addEventListener('click', sendMessage);
+    }
+    if (chatInput) {
+        chatInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+    }
+
+    quickReplyBtns.forEach((btn) => {
+        btn.addEventListener('click', function () {
+            const question = this.textContent;
+            addMessage(question, 'user');
+            typingIndicator.classList.remove('hidden');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            setTimeout(() => {
+                typingIndicator.classList.add('hidden');
+                const response = generateResponse(question);
+                addMessage(response.answer, 'bot', response.followUp);
+            }, 1500);
+        });
+    });
+
+    if (notificationBadge) {
+        setTimeout(() => {
+            if (chatContainer && chatContainer.classList.contains('hidden')) {
+                notificationBadge.classList.remove('hidden');
+            }
+        }, 30000);
+    }
+
+ 
+
+
+});
+
+  </script>

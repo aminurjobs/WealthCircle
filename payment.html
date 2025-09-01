@@ -1,0 +1,531 @@
+<html lang="en"><head></head><body class="font-sans text-dark bg-gray-50">--- START OF FILE payment.html ---
+
+  
+ 
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>
+   Easy Pay | WealthCircle
+  </title>
+  <meta content="Complete your secure payment to join WealthCircle." name="description">
+  <link href="css/all.min.css" rel="stylesheet">
+  <link href="css/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <script src="js/aos.js">
+  </script>
+  <style>
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .nav-link::after {
+        content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #fca311;
+      transition: width 0.3s;
+    }
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+        .card-logo {
+      height: 24px;
+      width: auto;
+      object-fit: contain;
+    }
+    @media (max-width: 768px) {
+     html, body {
+        overflow-x: hidden !important;
+        width: 100% !important;
+      }
+      .btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.95rem;
+      }
+       .card-logo {
+      height: 15px;
+      width: auto;
+      object-fit: contain;
+    }
+    }
+
+  </style>
+<script>
+   tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#14213D',
+            secondary: '#2F5233',
+            accent: '#FCA311',
+            light: '#DFF6F0',
+            dark: '#333333',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+ 
+ 
+  <!-- Navigation -->
+  <header class="fixed top-0 w-full bg-white shadow-sm z-50" id="home">
+   <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+     <!-- Logo -->
+     <div class="flex items-center space-x-4">
+      <a class="text-2xl font-bold text-primary" href="index.html">
+       <span class="text-accent">
+        Wealth
+       </span>
+       Circle
+      </a>
+     </div>
+     <!-- Desktop Navigation -->
+     <nav class="hidden md:flex space-x-8 items-center">
+      <a class="nav-link text-primary font-medium" href="index.html#home">
+       Home
+      </a>
+      <a class="nav-link text-primary font-medium" href="index.html#about">
+       About
+      </a>
+      <a class="nav-link text-primary font-medium" href="index.html#benefits">
+       Benefits
+      </a>
+      <a class="nav-link text-primary font-medium" href="index.html#insights">
+       Insights
+      </a>
+      <a class="nav-link text-primary font-medium" href="index.html#contact">
+       Contact
+      </a>
+     </nav>
+     <!-- Right side buttons -->
+     <div class="hidden md:flex items-center space-x-4">
+      <a href="payment.html" class="btn bg-accent hover:bg-opacity-90 text-white font-medium px-6 py-2 rounded-md transition duration-300 font-bold">
+        Easy Pay
+      </a>
+     </div>
+     <!-- Mobile Menu Button -->
+     <div class="md:hidden flex items-center space-x-4">
+       <button aria-label="Toggle menu" class="text-primary focus:outline-none" id="menu-toggle">
+         <i class="fas fa-bars text-2xl"></i>
+       </button>
+     </div>
+   </div>
+   <!-- Mobile Menu -->
+   <nav class="hidden md:hidden bg-white shadow-lg border-t border-gray-200" id="mobile-menu">
+     <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+       <a class="text-primary font-medium text-lg" href="index.html#home">
+         Home
+       </a>
+       <a class="text-primary font-medium text-lg" href="index.html#about">
+         About
+       </a>
+       <a class="text-primary font-medium text-lg" href="index.html#benefits">
+         Benefits
+       </a>
+       <a class="text-primary font-medium text-lg" href="index.html#insights">
+         Insights
+       </a>
+       <a class="text-primary font-medium text-lg" href="index.html#contact">
+         Contact
+       </a>
+      <a href="payment.html" class="btn bg-accent hover:bg-opacity-90 text-white font-medium px-6 py-2 rounded-md transition duration-300 font-bold">
+        Easy Pay
+      </a>
+     </div>
+   </nav>
+  </header>
+
+  <!-- Main Payment Section -->
+  <main class="flex items-center justify-center min-h-screen bg-gray-50 py-32 px-4">
+    <div class="bg-white rounded-3xl p-6 max-w-3xl w-full shadow-2xl relative sm:p-8">
+      <h1 id="paymentPopupTitle" class="text-gray-900 text-2xl mb-1 font-extrabold sm:text-3xl">
+        Choose Payment Method
+      </h1>
+      <p class="text-gray-600 text-base mb-6 sm:text-lg">
+        All transactions are secure and encrypted.
+      </p>
+
+      <form id="paymentDetailsForm" class="space-y-6" novalidate="">
+        <fieldset class="border border-gray-300 rounded-md divide-y divide-gray-300 mb-6" id="paymentMethodsPopup">
+          <label class="flex items-center justify-between p-4 cursor-pointer sm:p-6" for="creditCardPopup">
+            <div class="flex items-center gap-4">
+              <input class="w-5 h-5 text-accent bg-gray-50 border-gray-300" name="paymentPopup" type="radio" value="Credit card" id="creditCardPopup" aria-required="false">
+              <span class="text-gray-900 text-base sm:text-lg">Debit/Credit Card</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <img alt="Visa credit card logo, blue and gold Visa text on white background" class="card-logo" src="images/1200px-Visa_2021.svg.png">
+              <img alt="Mastercard credit card logo, two overlapping red and yellow circles with Mastercard text on white background" class="card-logo" src="images/1200px-Mastercard_2019_logo.svg.png">
+              <img alt="American Express credit card logo, blue rectangle with white American Express text" class="card-logo" src="images/American-Express-Color.png">
+            </div>
+          </label>
+          <label class="flex items-center justify-between p-4 cursor-pointer sm:p-6" for="applePayPopup">
+            <div class="flex items-center gap-4">
+              <input class="w-5 h-5 text-accent bg-gray-50 border-gray-300" name="paymentPopup" type="radio" value="Apple Pay" id="applePayPopup" aria-required="false">
+              <span class="text-gray-900 text-base sm:text-lg">Apple Pay</span>
+            </div>
+            <img alt="Apple Pay logo black text on white background" class="card-logo" src="images/2560px-Apple_Pay_logo.svg.png">
+          </label>
+        </fieldset>
+
+        <div id="cardFields" class="space-y-4 hidden">
+          <div class="mb-2">
+            <label class="sr-only" for="cardNumberPopup">Credit Card Number</label>
+            <input autocomplete="cc-number" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="cardNumberPopup" inputmode="numeric" type="text" name="cardNumberPopup" placeholder="Debit or Credit Card Number">
+          </div>
+
+          <div class="flex flex-col md:flex-row gap-6 mb-2">
+            <div class="flex-1">
+              <label class="sr-only" for="expiryPopup">Expiration Date</label>
+              <input autocomplete="cc-exp" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="expiryPopup" inputmode="numeric" type="text" name="expiryPopup" placeholder="Expiration Date">
+            </div>
+            <div class="flex-1">
+              <label class="sr-only" for="cvcPopup">Security Code</label>
+              <input autocomplete="cc-csc" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="cvcPopup" inputmode="numeric" type="text" name="cvcPopup" placeholder="Security Code">
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <label class="sr-only" for="cardNamePopup">Name On Card</label>
+            <input autocomplete="cc-name" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="cardNamePopup" type="text" name="cardNamePopup" placeholder="Name On Card">
+          </div>
+        </div>
+
+        <div id="applePayFields" class="hidden space-y-4">
+          <div class="mb-2">
+            <label class="sr-only" for="applePayName">Name on Apple Pay Account</label>
+            <input autocomplete="name" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="applePayName" type="text" name="applePayName" placeholder="Name on Apple Pay Account">
+          </div>
+          <div class="mb-2">
+            <label class="sr-only" for="applePayEmail">Apple Pay Email</label>
+            <input autocomplete="email" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="applePayEmail" type="email" name="applePayEmail" placeholder="Apple Pay Email">
+          </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-6 mb-2">
+          <div class="flex-1">
+            <label class="sr-only" for="countryPopup">Country</label>
+            <select id="countryPopup" name="countryPopup" required="" aria-required="true" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm bg-white sm:text-lg">
+              <option value="" disabled="" selected="">Country</option>
+              <option value="United States">United States</option>
+              <option value="Canada">Canada</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Australia">Australia</option>
+              <option value="Germany">Germany</option>
+              <option value="France">France</option>
+              <option value="India">India</option>
+              <option value="Japan">Japan</option>
+              <option value="China">China</option>
+              <option value="Brazil">Brazil</option>
+              <option value="Mexico">Mexico</option>
+              <option value="South Africa">South Africa</option>
+              <option value="New Zealand">New Zealand</option>
+              <option value="Netherlands">Netherlands</option>
+              <option value="Sweden">Sweden</option>
+            </select>
+          </div>
+          <div class="flex-1">
+            <label class="sr-only" for="zipPopup">Zip Code</label>
+            <input autocomplete="postal-code" class="w-full border border-gray-300 rounded-xl p-3 text-base focus:outline-none focus:ring-2 focus:ring-accent transition-shadow shadow-sm sm:text-lg" id="zipPopup" type="text" name="zipPopup" required="" aria-required="true" placeholder="Billing ZIP Code">
+          </div>
+        </div>
+
+        <h4 id="orderSummary" class="text-accent text-xl mb-2 flex justify-between items-center font-extrabold sm:text-2xl" aria-label="Payment required">
+          <span>Payment required</span>
+          <input type="text" id="orderAmount" value="$300.00" readonly="" class="bg-gray-50 rounded-md py-1 px-3 text-accent max-w-[150px] text-right cursor-not-allowed font-extrabold sm:text-xl" aria-readonly="true">
+        </h4>
+
+        <div class="flex items-start mb-4 space-x-3">
+          <input class="mt-1 w-5 h-5 border border-gray-400 rounded-lg focus:ring-2 focus:ring-accent transition-shadow shadow-sm" id="agreePopup" type="checkbox" name="agreePopup" required="" aria-required="true">
+          <label for="agreePopup" class="text-gray-700 text-base select-none sm:text-lg">
+            By submitting this form, I agree to the terms and conditions and provide my electronic consent.
+          </label>
+        </div>
+
+        <button class="w-full bg-accent hover:bg-opacity-90 text-white font-bold py-3 px-4 rounded-md transition duration-300 flex items-center justify-center gap-3 sm:text-xl" type="submit" aria-label="Submit Application">
+          <span class="tracking-wide text-sm md:text-xl" id="submitButtonText">
+          Pay Now
+          </span>
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Confirmation Popup Modal -->
+  <div id="confirmationPopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50 p-4" role="dialog" aria-modal="true" aria-labelledby="confirmationTitle" aria-describedby="confirmationDesc">
+    <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl text-center relative sm:p-10">
+      <button id="closeConfirmationPopup" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-2xl font-bold focus:outline-none sm:top-6 sm:right-6" aria-label="Close payment confirmation popup">
+        �
+      </button>
+      <i class="fas fa-check-circle text-accent text-6xl mb-6 sm:text-7xl"></i>
+      <h2 id="confirmationTitle" class="text-gray-900 font-extrabold text-xl mb-4 sm:text-2xl">
+        Success!
+      </h2>
+      <p id="confirmationDesc" class="text-gray-700 text-lg sm:text-xl">
+        You should receive a confirmation email shortly.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white py-12">
+   <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between">
+     <div class="mb-8 md:mb-0">
+      <a class="text-2xl font-bold text-white" href="index.html">
+       <span class="text-accent">
+        Wealth
+       </span>
+       Circle
+      </a>
+      <p class="mt-4 text-gray-300 max-w-xs">
+       We do the heavy lifting. It only gets better.
+      </p>
+     </div>
+     <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+      <div>
+       <h3 class="text-lg font-bold mb-4">
+        Navigation
+       </h3>
+       <ul class="space-y-2">
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="index.html#home">
+          Home
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="index.html#about">
+          About
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="index.html#benefits">
+          Benefits
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="index.html#insights">
+          Insights
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="index.html#join">
+          Join
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div>
+       <h3 class="text-lg font-bold mb-4">
+        Legal
+       </h3>
+       <ul class="space-y-2">
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#">
+          Terms of Service
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#">
+          Privacy Policy
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#">
+          Risk Disclosure
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#">
+          Compliance
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div>
+       <h3 class="text-lg font-bold mb-4">
+        Connect
+       </h3>
+       <ul class="space-y-2">
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="index.html#contact">
+          Contact Us
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#">
+          FAQ
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#">
+          Blog
+         </a>
+        </li>
+        <li>
+         <a class="text-gray-300 hover:text-accent transition duration-300" href="#">
+          Events
+         </a>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+    <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-center items-center">
+     <p class="text-gray-400 mb-4 md:mb-0">
+      © 2025 WealthCircle. All rights reserved.
+     </p>
+    </div>
+   </div>
+  </footer>
+
+ <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // --- Payment Form Logic for this page ---
+    const paymentDetailsForm = document.getElementById("paymentDetailsForm");
+    const confirmationPopup = document.getElementById("confirmationPopup");
+    const closeConfirmationPopup = document.getElementById("closeConfirmationPopup");
+    const creditCardRadio = document.getElementById("creditCardPopup");
+    const applePayRadio = document.getElementById("applePayPopup");
+    const cardFields = document.getElementById("cardFields");
+    const applePayFields = document.getElementById("applePayFields");
+    const orderAmountInput = document.getElementById("orderAmount");
+
+    function togglePaymentFields() {
+        if (creditCardRadio.checked) {
+            cardFields.classList.remove("hidden");
+            applePayFields.classList.add("hidden");
+            setRequired(cardFields, true);
+            setRequired(applePayFields, false);
+        } else if (applePayRadio.checked) {
+            cardFields.classList.add("hidden");
+            applePayFields.classList.remove("hidden");
+            setRequired(cardFields, false);
+            setRequired(applePayFields, true);
+        } else {
+            cardFields.classList.add("hidden");
+            applePayFields.classList.add("hidden");
+            setRequired(cardFields, false);
+            setRequired(applePayFields, false);
+        }
+    }
+
+    function setRequired(container, required) {
+        const inputs = container.querySelectorAll("input");
+        inputs.forEach((input) => {
+            if (required) {
+                input.setAttribute("required", "true");
+                input.setAttribute("aria-required", "true");
+            } else {
+                input.removeAttribute("required");
+                input.removeAttribute("aria-required");
+            }
+        });
+    }
+
+    creditCardRadio.addEventListener("change", togglePaymentFields);
+    applePayRadio.addEventListener("change", togglePaymentFields);
+
+    paymentDetailsForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Validate payment details form fields only if a payment method is selected
+        if (!creditCardRadio.checked && !applePayRadio.checked) {
+            // Optional: alert the user to select a payment method
+            alert("Please select a payment method.");
+            return;
+        }
+        
+        if (creditCardRadio.checked) {
+            if (
+                !paymentDetailsForm.querySelector("#cardNumberPopup").value.trim() ||
+                !paymentDetailsForm.querySelector("#expiryPopup").value.trim() ||
+                !paymentDetailsForm.querySelector("#cvcPopup").value.trim() ||
+                !paymentDetailsForm.querySelector("#cardNamePopup").value.trim()
+            ) {
+                paymentDetailsForm.reportValidity();
+                return;
+            }
+        } else if (applePayRadio.checked) {
+            if (
+                !paymentDetailsForm.querySelector("#applePayName").value.trim() ||
+                !paymentDetailsForm.querySelector("#applePayEmail").value.trim()
+            ) {
+                paymentDetailsForm.reportValidity();
+                return;
+            }
+        }
+
+        // Validate country and zip always
+        if (
+            !paymentDetailsForm.querySelector("#countryPopup").value ||
+            !paymentDetailsForm.querySelector("#zipPopup").value.trim()
+        ) {
+            paymentDetailsForm.reportValidity();
+            return;
+        }
+
+        // Validate agree checkbox
+        if (!paymentDetailsForm.querySelector("#agreePopup").checked) {
+            paymentDetailsForm.reportValidity();
+            return;
+        }
+
+        // Show confirmation popup
+        confirmationPopup.classList.remove("hidden");
+        paymentDetailsForm.reset();
+        
+        // Reset fields and radio buttons
+        cardFields.classList.add("hidden");
+        applePayFields.classList.add("hidden");
+        creditCardRadio.checked = false;
+        applePayRadio.checked = false;
+        
+        orderAmountInput.value = "$300.00";
+    });
+
+    // Close confirmation popup
+    closeConfirmationPopup.addEventListener("click", () => {
+        confirmationPopup.classList.add("hidden");
+    });
+
+    confirmationPopup.addEventListener("click", (e) => {
+        if (e.target === confirmationPopup) {
+            confirmationPopup.classList.add("hidden");
+        }
+    });
+
+    // Initialize AOS animations
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100,
+    });
+</script>
+ 
+
+</body></html>
